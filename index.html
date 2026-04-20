@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Varun Changappa | Strategic Marketing Professional</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --navy:#0d1b2a;--navy-mid:#162032;--accent:#2563eb;--accent-dark:#1d4ed8;
+      --accent-pale:#eff6ff;--text:#1e293b;--mid:#64748b;--light:#94a3b8;
+      --border:#e2e8f0;--white:#fff;--surface:#f8fafc;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;color:var(--text);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
+
+    /* NAV */
+    nav{
+      position:fixed;top:0;left:0;right:0;z-index:100;
+      background:rgba(255,255,255,0.97);backdrop-filter:blur(16px);
+      border-bottom:1px solid var(--border);
+      height:62px;display:flex;align-items:center;
+      padding:0 max(1.5rem,calc((100vw - 1140px)/2));
+      justify-content:space-between;
+    }
+    .nav-brand{display:flex;align-items:center;gap:0.65rem;text-decoration:none}
+    .vc-logo{width:34px;height:34px;flex-shrink:0}
+    .nav-name{font-weight:700;font-size:0.92rem;color:var(--navy);letter-spacing:-0.2px}
+    .nav-links{display:flex;gap:1.75rem;list-style:none}
+    .nav-links a{text-decoration:none;color:var(--mid);font-size:0.82rem;font-weight:500;transition:color 0.15s}
+    .nav-links a:hover{color:var(--accent)}
+    .nav-cta{background:var(--navy);color:var(--white);padding:0.42rem 1.1rem;border-radius:6px;font-size:0.8rem;font-weight:600;text-decoration:none;transition:opacity 0.2s}
+    .nav-cta:hover{opacity:0.8}
+
+    /* LAYOUT */
+    .container{max-width:1140px;margin:0 auto;padding:0 2rem}
+    section{padding:88px 0}
+    .label{font-size:0.67rem;font-weight:700;text-transform:uppercase;letter-spacing:1.8px;color:var(--accent);margin-bottom:0.85rem}
+    .title{font-size:clamp(1.55rem,2.8vw,2rem);font-weight:800;color:var(--navy);letter-spacing:-0.5px;line-height:1.15;margin-bottom:1.75rem}
+    .bar{width:34px;height:3px;background:var(--accent);border-radius:2px;margin-bottom:1.75rem}
+    .sub{color:var(--mid);font-size:0.88rem;margin-bottom:2.5rem;max-width:480px;line-height:1.7}
+
+    /* HERO */
+    .hero{padding:150px 0 96px;background:var(--navy)}
+    .hero-inner{max-width:1140px;margin:0 auto;padding:0 2rem}
+    .hero h1{font-size:clamp(2.4rem,5.5vw,4rem);font-weight:900;color:var(--white);letter-spacing:-2px;line-height:1.08;margin-bottom:1.2rem}
+    .hero h1 em{color:#60a5fa;font-style:normal}
+    .hero-sub{font-size:1rem;color:#94a3b8;max-width:480px;line-height:1.75;margin-bottom:2.5rem}
+    .hero-btns{display:flex;gap:0.8rem;flex-wrap:wrap;margin-bottom:4.5rem}
+    .btn-p{background:var(--accent);color:var(--white);padding:0.72rem 1.6rem;border-radius:7px;font-weight:600;font-size:0.87rem;text-decoration:none;transition:background 0.2s}
+    .btn-p:hover{background:var(--accent-dark)}
+    .btn-g{background:transparent;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.85);padding:0.72rem 1.6rem;border-radius:7px;font-weight:600;font-size:0.87rem;text-decoration:none;transition:border-color 0.2s}
+    .btn-g:hover{border-color:rgba(255,255,255,0.45)}
+
+    .stats-row{display:flex;border-top:1px solid rgba(255,255,255,0.07);padding-top:2.5rem;flex-wrap:wrap;gap:0}
+    .stat{flex:1;min-width:130px}
+    .stat:not(:first-child){padding-left:2.5rem;border-left:1px solid rgba(255,255,255,0.07)}
+    .stat-n{font-size:2.2rem;font-weight:900;color:#60a5fa;letter-spacing:-1.5px;display:block;line-height:1;margin-bottom:0.35rem}
+    .stat-d{font-size:0.73rem;color:#64748b;line-height:1.4;max-width:140px}
+
+    /* ABOUT */
+    .about{background:var(--surface)}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+    .about-body p{font-size:0.92rem;color:var(--mid);line-height:1.85}
+    .about-body p+p{margin-top:0.9rem}
+    .about-pills{display:flex;flex-direction:column;gap:0.6rem}
+    .a-pill{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:0.9rem 1.1rem;display:flex;align-items:flex-start;gap:0.8rem}
+    .a-bar{width:3px;min-height:36px;background:var(--accent);border-radius:2px;flex-shrink:0;align-self:stretch}
+    .a-label{font-size:0.82rem;font-weight:700;color:var(--navy)}
+    .a-desc{font-size:0.74rem;color:var(--mid);margin-top:0.1rem;line-height:1.5}
+
+    /* EXPERIENCE TIMELINE */
+    .tl-wrap{position:relative;padding-left:1.5rem}
+    .tl-wrap::before{content:'';position:absolute;left:5px;top:12px;bottom:12px;width:2px;background:var(--border);border-radius:2px}
+    .tl-item{position:relative;padding-bottom:2.2rem;display:flex;align-items:flex-start;gap:1rem}
+    .tl-item:last-child{padding-bottom:0}
+    .tl-dot{position:absolute;left:-1.5rem;top:11px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:2.5px solid var(--white);box-shadow:0 0 0 2px var(--accent);flex-shrink:0}
+    .tl-logo{width:46px;height:46px;border-radius:10px;border:1px solid var(--border);background:var(--white);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0}
+    .tl-logo img{width:34px;height:34px;object-fit:contain}
+    .tl-co{font-size:1rem;font-weight:800;color:var(--navy);line-height:1.2}
+    .tl-role{font-size:0.82rem;font-weight:600;color:var(--accent);margin-top:0.2rem}
+    .tl-period{font-size:0.72rem;color:var(--light);margin-top:0.2rem}
+
+    /* WORK SECTION */
+    .work{background:var(--surface)}
+    .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+    .wcard{background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow 0.2s,transform 0.2s}
+    .wcard:hover{box-shadow:0 10px 36px rgba(0,0,0,0.08);transform:translateY(-3px)}
+
+
+    /* card content */
+    .wcard-body{padding:0.95rem 1.1rem;flex:1}
+    .wcat{font-size:0.62rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--light);font-weight:700;margin-bottom:0.3rem}
+    .wtitle{font-size:0.87rem;font-weight:700;color:var(--navy);line-height:1.35;margin-bottom:0.5rem}
+    .wprev{font-size:0.74rem;color:var(--mid);line-height:1.6;font-style:italic;border-left:2px solid var(--border);padding-left:0.55rem;margin-bottom:0.55rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .wmetric{font-size:0.68rem;font-weight:600;color:var(--accent);background:var(--accent-pale);padding:0.2rem 0.52rem;border-radius:4px;display:inline-block}
+
+    .wcard-foot{padding:0.7rem 1.1rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.4rem}
+    .wtags{display:flex;gap:0}
+    .wtag{font-size:0.62rem;color:var(--light)}
+    .wtag:not(:last-child)::after{content:' · '}
+    .wlink{font-size:0.73rem;font-weight:600;color:var(--accent);text-decoration:none;white-space:nowrap}
+    .wlink:hover{text-decoration:underline}
+    .wlinks{display:flex;gap:0.75rem;flex-wrap:wrap}
+    .wlinks a{font-size:0.7rem;font-weight:600;color:var(--accent);text-decoration:none}
+    .wlinks a:hover{text-decoration:underline}
+
+    /* WORK CARD TEXT BANNER */
+    .wcard-banner{height:110px;background:var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.35rem;border-bottom:1px solid var(--border)}
+    .wcat-name{font-size:1.05rem;font-weight:800;color:var(--white);letter-spacing:-0.3px;text-align:center}
+    .wcat-count{font-size:0.6rem;font-weight:700;color:#60a5fa;letter-spacing:1.8px;text-transform:uppercase}
+
+    /* TECH STACK */
+    .tools-sec{background:var(--surface)}
+    .tools-wrap{display:flex;flex-wrap:wrap;gap:0.65rem}
+    .tool-chip{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:0.5rem 0.85rem;display:flex;align-items:center;gap:0.55rem;transition:box-shadow 0.2s,border-color 0.15s}
+    .tool-chip:hover{box-shadow:0 4px 14px rgba(0,0,0,0.07);border-color:#cbd5e1}
+    .tool-logo{width:22px;height:22px;object-fit:contain;flex-shrink:0;border-radius:4px}
+    .tool-badge{width:22px;height:22px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:0.5rem;font-weight:800;color:white;flex-shrink:0;letter-spacing:-0.3px}
+    .tool-name{font-size:0.8rem;font-weight:600;color:var(--navy)}
+
+    /* SKILLS */
+    .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+    .sg h4{font-size:0.79rem;font-weight:700;color:var(--navy);margin-bottom:0.55rem;padding-bottom:0.45rem;border-bottom:1px solid var(--border)}
+    .si{font-size:0.78rem;color:var(--mid);display:flex;align-items:center;gap:0.45rem;margin-bottom:0.28rem}
+    .si::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--accent);flex-shrink:0}
+
+    /* CERTIFICATIONS */
+    .certs{background:var(--surface)}
+    .cert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .cert-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1rem 1.1rem;display:flex;align-items:center;gap:0.85rem;transition:box-shadow 0.2s}
+    .cert-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.06)}
+    .cert-logo{width:38px;height:38px;border-radius:8px;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;border:1px solid var(--border)}
+    .cert-logo img{width:32px;height:32px;object-fit:contain}
+    .cert-logo-badge{width:38px;height:38px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:800;color:var(--white);letter-spacing:-0.3px}
+    .cert-name{font-size:0.8rem;font-weight:600;color:var(--navy);line-height:1.35}
+    .cert-by{font-size:0.7rem;color:var(--light);margin-top:0.15rem}
+
+    /* AI SECTION */
+    .ai-sec{background:var(--navy);color:var(--white)}
+    .ai-inner{max-width:1140px;margin:0 auto;padding:88px 2rem}
+    .ai-sec .label{color:#60a5fa}
+    .ai-sec .title{color:var(--white)}
+    .ai-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-bottom:3rem}
+    .ai-left p{font-size:0.88rem;color:#94a3b8;line-height:1.8}
+    .ai-left p+p{margin-top:0.85rem}
+    .ai-cards{display:flex;flex-direction:column;gap:0.6rem}
+    .ai-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:9px;padding:0.9rem 1.1rem}
+    .ai-card h4{font-size:0.82rem;font-weight:700;color:#e2e8f0;margin-bottom:0.2rem}
+    .ai-card p{font-size:0.75rem;color:#64748b;line-height:1.55}
+    .ai-ctas{display:flex;gap:0.8rem;flex-wrap:wrap;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.07)}
+    .btn-a{background:var(--accent);color:var(--white);padding:0.72rem 1.6rem;border-radius:7px;font-weight:600;font-size:0.87rem;text-decoration:none;transition:background 0.2s}
+    .btn-a:hover{background:var(--accent-dark)}
+    .btn-s{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.8);padding:0.72rem 1.6rem;border-radius:7px;font-weight:600;font-size:0.87rem;text-decoration:none;transition:background 0.2s}
+    .btn-s:hover{background:rgba(255,255,255,0.12)}
+
+    /* CONTACT */
+    .contact{padding:88px 0}
+    .ci h2{font-size:1.8rem;font-weight:800;color:var(--navy);letter-spacing:-0.5px;margin-bottom:0.55rem}
+    .ci p{font-size:0.88rem;color:var(--mid);line-height:1.75;margin-bottom:1.5rem;max-width:480px}
+    .c-links{display:flex;gap:0.7rem;flex-wrap:wrap}
+    .c-link{display:inline-flex;align-items:center;gap:0.4rem;background:var(--navy);color:var(--white);padding:0.62rem 1.25rem;border-radius:7px;font-size:0.83rem;font-weight:600;text-decoration:none;transition:opacity 0.2s}
+    .c-link:hover{opacity:0.82}
+    .c-link.out{background:transparent;color:var(--navy);border:1px solid var(--border)}
+    .c-link.out:hover{background:var(--surface)}
+
+    footer{background:var(--surface);border-top:1px solid var(--border);padding:1.4rem 2rem;text-align:center;font-size:0.71rem;color:var(--light)}
+
+    /* RESPONSIVE */
+    @media(max-width:1000px){
+      .work-grid,.skills-grid{grid-template-columns:repeat(2,1fr)}
+      .cert-grid{grid-template-columns:repeat(2,1fr)}
+      .about-grid,.ai-grid{grid-template-columns:1fr;gap:2.5rem}
+    }
+    @media(max-width:640px){
+      .work-grid,.cert-grid,.skills-grid{grid-template-columns:1fr}
+      .nav-links{display:none}
+      .stats-row{gap:2rem}
+      .stat:not(:first-child){border-left:none;padding-left:0}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">
+    <svg class="vc-logo" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="34" height="34" rx="8" fill="#0d1b2a"/>
+      <path d="M8 10L13.5 22.5L17 14L20.5 22.5L26 10" stroke="#60a5fa" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="17" cy="24" r="1.5" fill="#2563eb"/>
+    </svg>
+    <span class="nav-name">Varun Changappa</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#certifications">Credentials</a></li>
+  </ul>
+  <a href="mailto:varunchangappa11@gmail.com" class="nav-cta">Get in Touch</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Hi, I'm Varun Changappa,<br/>a <em>Strategic Marketing</em><br/>Professional</h1>
+    <p class="hero-sub">I build marketing programmes that convert, from first impression to closed deal, across content, campaigns, and paid media.</p>
+    <div class="hero-btns">
+      <a href="#work" class="btn-p">View My Work</a>
+      <a href="#contact" class="btn-g">Get in Touch</a>
+    </div>
+    <div class="stats-row">
+      <div class="stat">
+        <span class="stat-n">40%</span>
+        <span class="stat-d">Conversion rate uplift on paid campaigns</span>
+      </div>
+      <div class="stat">
+        <span class="stat-n">10x</span>
+        <span class="stat-d">Press release views vs. benchmark</span>
+      </div>
+      <div class="stat">
+        <span class="stat-n">29%</span>
+        <span class="stat-d">Revenue increase from marketing activity</span>
+      </div>
+      <div class="stat">
+        <span class="stat-n">72%</span>
+        <span class="stat-d">Peak email newsletter open rate</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <p class="label">About</p>
+    <div class="bar"></div>
+    <div class="about-grid">
+      <div class="about-body">
+        <p>Born in India, living in Ireland, and still figuring out if cricket or GAA deserves more passion. I landed in marketing because it is the one field where storytelling and strategy share the same sentence.</p>
+        <p>On the career side, I have spent the last few years building full-funnel marketing programmes for online learning platforms. Writing SEO microsites, email drip sequences, award entries, and press releases, often in the same week. I cover the full marketing mix and genuinely enjoy it.</p>
+        <p>Outside work you will find me at the gym, watching a match, or convincing myself that planning a trip counts as actually taking one. Same energy in campaigns: structured thinking, bias for action, and a strong view on what good copy actually means.</p>
+      </div>
+      <div class="about-pills">
+        <div class="a-pill"><div class="a-bar"></div><div><div class="a-label">Content and Copywriting</div><div class="a-desc">Websites, blogs, case studies, brochures, press releases</div></div></div>
+        <div class="a-pill"><div class="a-bar"></div><div><div class="a-label">Email and Nurture</div><div class="a-desc">Drip sequences, re-engagement, lifecycle campaigns</div></div></div>
+        <div class="a-pill"><div class="a-bar"></div><div><div class="a-label">Paid Media and Social</div><div class="a-desc">LinkedIn Ads, Google PMAX/PPC, social content at scale</div></div></div>
+        <div class="a-pill"><div class="a-bar"></div><div><div class="a-label">Demand Generation</div><div class="a-desc">Webinars, pipeline re-engagement, sales enablement</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <p class="label">Experience</p>
+    <div class="bar"></div>
+    <h2 class="title">Where I have worked</h2>
+    <div class="tl-wrap">
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-logo"><img src="https://logo.clearbit.com/alison.com" alt="Alison" onerror="this.closest('.tl-logo').style.visibility='hidden'"/></div>
+        <div>
+          <div class="tl-co">Alison</div>
+          <div class="tl-role">Marketing Manager</div>
+          <div class="tl-period">Jan 2025 – Present &middot; Dublin, Ireland</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-logo"><img src="https://logo.clearbit.com/greyhoundrecycling.com" alt="Greyhound Recycling" onerror="this.closest('.tl-logo').style.visibility='hidden'"/></div>
+        <div>
+          <div class="tl-co">Greyhound Recycling</div>
+          <div class="tl-role">Sales Campaign Specialist</div>
+          <div class="tl-period">Mar 2024 – Dec 2024 &middot; Dublin, Ireland</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-logo"><img src="https://logo.clearbit.com/teamsuccesso.com" alt="Teamsuccesso" onerror="this.closest('.tl-logo').style.visibility='hidden'"/></div>
+        <div>
+          <div class="tl-co">Teamsuccesso Pvt. Ltd.</div>
+          <div class="tl-role">Digital Marketing Executive</div>
+          <div class="tl-period">Oct 2021 – Dec 2022 &middot; India</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-logo"><img src="https://logo.clearbit.com/kia.com" alt="KIA Motors" onerror="this.closest('.tl-logo').style.visibility='hidden'"/></div>
+        <div>
+          <div class="tl-co">KIA Motors</div>
+          <div class="tl-role">Sales and Marketing Executive</div>
+          <div class="tl-period">Jul 2019 – Dec 2020 &middot; India</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="work" id="work">
+  <div class="container">
+    <p class="label">Work</p>
+    <div class="bar"></div>
+    <h2 class="title">Selected projects</h2>
+    <p class="sub">A selection of real work across campaigns, content, and creative. Click any link to open the file in Google Drive.</p>
+
+    <div class="work-grid">
+
+      <!-- Case Studies: 4 files -->
+      <div class="wcard">
+        <div class="wcard-banner">
+          <div class="wcat-count">4 documents</div>
+          <div class="wcat-name">Case Studies</div>
+        </div>
+        <div class="wcard-body">
+          <div class="wcat">Case Studies</div>
+          <div class="wtitle">Client Case Study Collection</div>
+          <div class="wprev">Client-approved case studies built for sales pipeline use, covering adoption outcomes, learner completion rates, and measurable impact.</div>
+          <div class="wmetric">Client-signed off, used in active demand gen</div>
+        </div>
+        <div class="wcard-foot">
+          <div class="wtags"><span class="wtag">Social proof</span><span class="wtag">Demand gen</span></div>
+          <div class="wlinks">
+            <a href="https://drive.google.com/file/d/1v8OfrnvU2hAxUrAvv0K9jJ_Fs6AEuMe6/view" target="_blank">1</a>
+            <a href="https://drive.google.com/file/d/1wYdAvMyDpsWk8LGH2a0IU3Nfgq8VYbbc/view" target="_blank">2</a>
+            <a href="https://drive.google.com/file/d/1bb1FapvcDjVW4NSzWmyPuNmD4pUsjqWj/view" target="_blank">3</a>
+            <a href="https://drive.google.com/file/d/1mZXjBq2Ha6P_N3QC_J8PDLQHjhTqULf_/view" target="_blank">4</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Press Releases: 3 files -->
+      <div class="wcard">
+        <div class="wcard-banner">
+          <div class="wcat-count">3 documents</div>
+          <div class="wcat-name">Press Releases</div>
+        </div>
+        <div class="wcard-body">
+          <div class="wcat">PR and Communications</div>
+          <div class="wtitle">Press Release Programme</div>
+          <div class="wprev">Press releases for product launches and company announcements, published across trade media and stakeholder channels.</div>
+          <div class="wmetric">10x views vs. previous content benchmark</div>
+        </div>
+        <div class="wcard-foot">
+          <div class="wtags"><span class="wtag">PR writing</span><span class="wtag">Comms</span></div>
+          <div class="wlinks">
+            <a href="https://drive.google.com/file/d/1fpx9V75KLJqC04ZJG2YkLVVrMLbZEQsF/view" target="_blank">1</a>
+            <a href="https://drive.google.com/file/d/1449Fhha813oA3IgKZJdURMWQWyeQfsQF/view" target="_blank">2</a>
+            <a href="https://drive.google.com/file/d/1_nXBLMydWxidhyWDZgprG98LvIMb0AGj/view" target="_blank">3</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ad Assets: 5 files -->
+      <div class="wcard">
+        <div class="wcard-banner">
+          <div class="wcat-count">5 creatives</div>
+          <div class="wcat-name">Ad Assets</div>
+        </div>
+        <div class="wcard-body">
+          <div class="wcat">Ad Assets</div>
+          <div class="wtitle">LinkedIn and Google Ad Creative Library</div>
+          <div class="wprev">Full library of ad copy and creative across single-image, carousel, and display formats, mapped to audience segments by funnel stage.</div>
+          <div class="wmetric">40% conversion rate uplift across campaigns</div>
+        </div>
+        <div class="wcard-foot">
+          <div class="wtags"><span class="wtag">LinkedIn Ads</span><span class="wtag">Google Ads</span><span class="wtag">PMAX</span></div>
+          <div class="wlinks">
+            <a href="https://drive.google.com/file/d/1aCb29JN4bDj_TCpuger6LCOqZWOJh0fw/view" target="_blank">1</a>
+            <a href="https://drive.google.com/file/d/1LeXxYv2t0ZSSY8A7pzNbkZyjcVBFDthw/view" target="_blank">2</a>
+            <a href="https://drive.google.com/file/d/16WB2sPFwEkVOmZa4MJoLLpFRrmDp_J1Q/view" target="_blank">3</a>
+            <a href="https://drive.google.com/file/d/11olXYZkICd8n4YKZJ2e1GdqOBu5afOB2/view" target="_blank">4</a>
+            <a href="https://drive.google.com/file/d/1uVcfT2UYDBWFr4nbE-ilvBhTObIOoX-q/view" target="_blank">5</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Social Media: 4 files -->
+      <div class="wcard">
+        <div class="wcard-banner">
+          <div class="wcat-count">4 posts</div>
+          <div class="wcat-name">Social Media</div>
+        </div>
+        <div class="wcard-body">
+          <div class="wcat">Social Media</div>
+          <div class="wtitle">Social Media Content and Creatives</div>
+          <div class="wprev">Organic social content, carousels, and creative assets produced at scale across LinkedIn and other channels.</div>
+          <div class="wmetric">Consistent publishing cadence across channels</div>
+        </div>
+        <div class="wcard-foot">
+          <div class="wtags"><span class="wtag">LinkedIn</span><span class="wtag">Organic social</span></div>
+          <div class="wlinks">
+            <a href="https://drive.google.com/file/d/1IBc2lS0sAuokJW6gdCxHsO4ixZ9byIA0/view" target="_blank">1</a>
+            <a href="https://drive.google.com/file/d/1VXYlWd0RO6JUMOoKZ5H5IHdUHpFVlLcw/view" target="_blank">2</a>
+            <a href="https://drive.google.com/file/d/16K8tHNondQn_vnN-MB0c310CZZhH5d6g/view" target="_blank">3</a>
+            <a href="https://drive.google.com/file/d/1pEmTi1txzAdMXzP-0o3H0GIwYdi-yEGx/view" target="_blank">4</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Email Campaigns: 3 files -->
+      <div class="wcard">
+        <div class="wcard-banner">
+          <div class="wcat-count">3 campaigns</div>
+          <div class="wcat-name">Email Campaigns</div>
+        </div>
+        <div class="wcard-body">
+          <div class="wcat">Email Campaigns</div>
+          <div class="wtitle">Email Campaigns and Newsletter</div>
+          <div class="wprev">Gamified learning launch email, Group Functionality product email, and The Training Times newsletter, each targeting distinct audience segments.</div>
+          <div class="wmetric">72.05% peak open rate on newsletter</div>
+        </div>
+        <div class="wcard-foot">
+          <div class="wtags"><span class="wtag">Email marketing</span><span class="wtag">Newsletter</span></div>
+          <div class="wlinks">
+            <a href="https://drive.google.com/file/d/16-eOinX7uoWX1DEtvw6TNy8AU9gQ2WtZ/view" target="_blank">Gamified</a>
+            <a href="https://drive.google.com/file/d/1m0zGX0Nb6M8avUMMbVAOnGS20TBhKZ0I/view" target="_blank">Group</a>
+            <a href="https://drive.google.com/file/d/1bz1mq_xNHgNv-dIMwChS4Hpzpzkayt9Y/view" target="_blank">Newsletter</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Brochures: 2 files -->
+      <div class="wcard">
+        <div class="wcard-banner">
+          <div class="wcat-count">2 documents</div>
+          <div class="wcat-name">Brochures</div>
+        </div>
+        <div class="wcard-body">
+          <div class="wcat">Brochures</div>
+          <div class="wtitle">Sales Brochures and One-Pagers</div>
+          <div class="wprev">Sales and marketing brochures designed to support commercial client acquisition and improve value communication for the sales team.</div>
+          <div class="wmetric">Used in active sales enablement</div>
+        </div>
+        <div class="wcard-foot">
+          <div class="wtags"><span class="wtag">Sales enablement</span><span class="wtag">Collateral</span></div>
+          <div class="wlinks">
+            <a href="https://drive.google.com/file/d/14N6gBM5yW8uZfO5UfAAq59uDcm_1hZkS/view" target="_blank">Brochure 1</a>
+            <a href="https://drive.google.com/file/d/13F19CnD4yO7gTQRL-iPSO0xXCaZCtzJz/view" target="_blank">Brochure 2</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Webinar: 1 file -->
+      <div class="wcard">
+        <div class="wcard-banner">
+          <div class="wcat-count">1 recording</div>
+          <div class="wcat-name">Webinar</div>
+        </div>
+        <div class="wcard-body">
+          <div class="wcat">Webinar and Events</div>
+          <div class="wtitle">End-to-End Webinar Programme</div>
+          <div class="wprev">Full asset suite covering promotion, email invites, landing page copy, and post-event follow-up sequences.</div>
+          <div class="wmetric">Full pre, live, and post-event coverage</div>
+        </div>
+        <div class="wcard-foot">
+          <div class="wtags"><span class="wtag">Webinar</span><span class="wtag">Demand gen</span></div>
+          <a class="wlink" href="https://drive.google.com/file/d/1noWKdbjlIh41uujg6vZs1jL0idOenCZa/view" target="_blank">View in Drive</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <p class="label">Skills</p>
+    <div class="bar"></div>
+    <h2 class="title">What I bring</h2>
+    <div class="skills-grid">
+      <div class="sg"><h4>Content and Copy</h4><div class="si">SEO website copywriting</div><div class="si">Blog and thought leadership</div><div class="si">Case studies and client stories</div><div class="si">Sales brochures and one-pagers</div><div class="si">Press releases and award submissions</div></div>
+      <div class="sg"><h4>Campaigns and Email</h4><div class="si">Email drip sequences</div><div class="si">Mid-funnel re-engagement</div><div class="si">Lifecycle communications</div><div class="si">Webinar and event asset production</div><div class="si">Campaign planning and execution</div></div>
+      <div class="sg"><h4>Paid and Social</h4><div class="si">LinkedIn Ads (copy and creative)</div><div class="si">Google PMAX and PPC</div><div class="si">Social media content at scale</div><div class="si">GIF and animation assets</div><div class="si">ICP audience segmentation</div></div>
+      <div class="sg"><h4>SEO and Web</h4><div class="si">Keyword research and mapping</div><div class="si">On-page SEO optimisation</div><div class="si">Meta title and description writing</div><div class="si">Content cluster strategy</div><div class="si">GA4 and Google Search Console</div></div>
+      <div class="sg"><h4>Strategy and Planning</h4><div class="si">Buyer journey mapping</div><div class="si">ICP development</div><div class="si">Sales enablement content</div><div class="si">Pipeline re-engagement</div><div class="si">Marketing plan development</div></div>
+      <div class="sg"><h4>Tools and Platforms</h4><div class="si">HubSpot and Zoho CRM</div><div class="si">Google Ads and Analytics 4</div><div class="si">LinkedIn Campaign Manager</div><div class="si">AWS Quicksight</div><div class="si">Zapier and automation workflows</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH STACK -->
+<section class="tools-sec" id="tools">
+  <div class="container">
+    <p class="label">Tech Stack</p>
+    <div class="bar"></div>
+    <h2 class="title">Tools I work with</h2>
+    <div class="tools-wrap">
+
+      <div class="tool-chip">
+        <img class="tool-logo" src="https://logo.clearbit.com/anthropic.com" alt="Claude Cowork"
+          onerror="this.onerror=null;this.outerHTML='<div class=tool-badge style=background:#1a1a1a>AI</div>'"/>
+        <span class="tool-name">Claude Cowork</span>
+      </div>
+
+      <div class="tool-chip">
+        <img class="tool-logo" src="https://logo.clearbit.com/apollo.io" alt="Apollo"
+          onerror="this.onerror=null;this.outerHTML='<div class=tool-badge style=background:#1a56db>AP</div>'"/>
+        <span class="tool-name">Apollo</span>
+      </div>
+
+      <div class="tool-chip">
+        <img class="tool-logo" src="https://logo.clearbit.com/zapier.com" alt="Zapier"
+          onerror="this.onerror=null;this.outerHTML='<div class=tool-badge style=background:#ff4a00>ZP</div>'"/>
+        <span class="tool-name">Zapier</span>
+      </div>
+
+      <div class="tool-chip">
+        <img class="tool-logo" src="https://logo.clearbit.com/hubspot.com" alt="HubSpot"
+          onerror="this.onerror=null;this.outerHTML='<div class=tool-badge style=background:#ff7a59>HS</div>'"/>
+        <span class="tool-name">HubSpot</span>
+      </div>
+
+      <div class="tool-chip">
+        <img class="tool-logo" src="https://logo.clearbit.com/figma.com" alt="Figma"
+          onerror="this.onerror=null;this.outerHTML='<div class=tool-badge style=background:#a259ff>FG</div>'"/>
+        <span class="tool-name">Figma</span>
+      </div>
+
+      <div class="tool-chip">
+        <img class="tool-logo" src="https://logo.clearbit.com/buffer.com" alt="Buffer"
+          onerror="this.onerror=null;this.outerHTML='<div class=tool-badge style=background:#2c4bff>BF</div>'"/>
+        <span class="tool-name">Buffer</span>
+      </div>
+
+      <div class="tool-chip">
+        <img class="tool-logo" src="https://logo.clearbit.com/semrush.com" alt="Semrush"
+          onerror="this.onerror=null;this.outerHTML='<div class=tool-badge style=background:#ff642d>SR</div>'"/>
+        <span class="tool-name">Semrush</span>
+      </div>
+
+      <div class="tool-chip">
+        <img class="tool-logo" src="https://logo.clearbit.com/lookerstudio.google.com" alt="Looker Studio"
+          onerror="this.onerror=null;this.src='https://logo.clearbit.com/google.com';this.onerror=null"/>
+        <span class="tool-name">Looker Studio</span>
+      </div>
+
+      <div class="tool-chip">
+        <img class="tool-logo" src="https://logo.clearbit.com/google.com" alt="Google"
+          onerror="this.onerror=null;this.outerHTML='<div class=tool-badge style=background:#4285f4>G</div>'"/>
+        <span class="tool-name">Google Ads</span>
+      </div>
+
+      <div class="tool-chip">
+        <img class="tool-logo" src="https://logo.clearbit.com/meta.com" alt="Meta"
+          onerror="this.onerror=null;this.outerHTML='<div class=tool-badge style=background:#0866ff>M</div>'"/>
+        <span class="tool-name">Meta Ads</span>
+      </div>
+
+      <div class="tool-chip">
+        <img class="tool-logo" src="https://logo.clearbit.com/linkedin.com" alt="LinkedIn"
+          onerror="this.onerror=null;this.outerHTML='<div class=tool-badge style=background:#0a66c2>in</div>'"/>
+        <span class="tool-name">LinkedIn Ads</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="certs" id="certifications">
+  <div class="container">
+    <p class="label">Certifications</p>
+    <div class="bar"></div>
+    <h2 class="title">Credentials</h2>
+    <div class="cert-grid">
+
+      <div class="cert-card">
+        <div class="cert-logo" style="background:#fff">
+          <img src="https://logo.clearbit.com/google.com" alt="Google" style="width:28px;height:28px;object-fit:contain"
+            onerror="this.onerror=null;this.parentNode.innerHTML='<svg viewBox=&quot;0 0 48 48&quot; width=&quot;28&quot; height=&quot;28&quot;><path fill=&quot;#4285F4&quot; d=&quot;M44.5 20H24v8.5h11.8C34.1 33.9 29.6 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C34.6 5.1 29.6 3 24 3 12.4 3 3 12.4 3 24s9.4 21 21 21c10.5 0 20-7.6 20-21 0-1.3-.2-2.7-.5-4z&quot;/></svg>'"/>
+        </div>
+        <div><div class="cert-name">Google Analytics Certification</div><div class="cert-by">Google Skillshop</div></div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-logo" style="background:#fff">
+          <img src="https://logo.clearbit.com/google.com" alt="Google" style="width:28px;height:28px;object-fit:contain"
+            onerror="this.onerror=null;this.parentNode.innerHTML='<svg viewBox=&quot;0 0 48 48&quot; width=&quot;28&quot; height=&quot;28&quot;><path fill=&quot;#4285F4&quot; d=&quot;M44.5 20H24v8.5h11.8C34.1 33.9 29.6 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C34.6 5.1 29.6 3 24 3 12.4 3 3 12.4 3 24s9.4 21 21 21c10.5 0 20-7.6 20-21 0-1.3-.2-2.7-.5-4z&quot;/></svg>'"/>
+        </div>
+        <div><div class="cert-name">Dive Deeper into GA4 Data and Reports</div><div class="cert-by">Google Skillshop</div></div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-logo" style="background:#fff">
+          <img src="https://logo.clearbit.com/hubspot.com" alt="HubSpot" style="width:28px;height:28px;object-fit:contain"
+            onerror="this.onerror=null;this.parentNode.outerHTML='<div class=cert-logo-badge style=background:#ff7a59>HS</div>'"/>
+        </div>
+        <div><div class="cert-name">HubSpot Marketing Hub Software</div><div class="cert-by">HubSpot Academy</div></div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-logo" style="background:#0a66c2">
+          <img src="https://logo.clearbit.com/linkedin.com" alt="LinkedIn" style="width:28px;height:28px;object-fit:contain"
+            onerror="this.onerror=null;this.parentNode.outerHTML='<div class=cert-logo-badge style=background:#0a66c2>in</div>'"/>
+        </div>
+        <div><div class="cert-name">LinkedIn Certified Marketing Insider</div><div class="cert-by">LinkedIn Learning</div></div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-logo" style="background:#1a1a1a">
+          <img src="https://logo.clearbit.com/anthropic.com" alt="Anthropic" style="width:28px;height:28px;object-fit:contain"
+            onerror="this.onerror=null;this.parentNode.outerHTML='<div class=cert-logo-badge style=background:#1a1a1a;font-size:0.58rem>AI</div>'"/>
+        </div>
+        <div><div class="cert-name">Claude Cowork and Claude Code Mastery</div><div class="cert-by">Claude Marketers</div></div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-logo" style="background:#1a1a1a">
+          <img src="https://logo.clearbit.com/anthropic.com" alt="Anthropic" style="width:28px;height:28px;object-fit:contain"
+            onerror="this.onerror=null;this.parentNode.outerHTML='<div class=cert-logo-badge style=background:#1a1a1a;font-size:0.58rem>AI</div>'"/>
+        </div>
+        <div><div class="cert-name">AI Fluency: Framework and Foundations</div><div class="cert-by">Anthropic (Claude)</div></div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-logo" style="background:#1a1a1a">
+          <img src="https://logo.clearbit.com/anthropic.com" alt="Anthropic" style="width:28px;height:28px;object-fit:contain"
+            onerror="this.onerror=null;this.parentNode.outerHTML='<div class=cert-logo-badge style=background:#1a1a1a;font-size:0.58rem>AI</div>'"/>
+        </div>
+        <div><div class="cert-name">Introduction to Agent Skills</div><div class="cert-by">Anthropic (Claude)</div></div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-logo" style="background:#052e16">
+          <img src="https://logo.clearbit.com/outskill.io" alt="Outskill" style="width:28px;height:28px;object-fit:contain"
+            onerror="this.onerror=null;this.parentNode.outerHTML='<div class=cert-logo-badge style=background:linear-gradient(135deg,#052e16,#14532d)>OS</div>'"/>
+        </div>
+        <div><div class="cert-name">Generative AI Mastermind</div><div class="cert-by">Outskill</div></div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-logo" style="background:#fff">
+          <img src="https://logo.clearbit.com/alison.com" alt="Alison" style="width:28px;height:28px;object-fit:contain"
+            onerror="this.onerror=null;this.parentNode.outerHTML='<div class=cert-logo-badge style=background:#2563eb>AL</div>'"/>
+        </div>
+        <div><div class="cert-name">AI-Driven Digital Marketing Strategies</div><div class="cert-by">Alison</div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- AI SECTION -->
+<section class="ai-sec" id="ai">
+  <div class="ai-inner">
+    <p class="label">How I Work</p>
+    <div class="bar"></div>
+    <h2 class="title">My shift to AI-first workflows</h2>
+    <div class="ai-grid">
+      <div class="ai-left">
+        <p>Over the last year I have been deliberately rebuilding how I work. Not by replacing thinking with AI, but by using it to compress the distance between brief and output. Research that used to take a day now takes an hour. First drafts that would sit overnight get iterated in real time.</p>
+        <p>The result is that I can run more campaigns, test more angles, and produce more content without scaling headcount. In a marketing function where speed and quality both matter, that is a genuine edge.</p>
+        <p>I use AI as a thought partner, a drafting assistant, and a research accelerant. Strategy, judgment, and final quality control stay with me.</p>
+      </div>
+      <div class="ai-cards">
+        <div class="ai-card"><h4>Drafting and Iteration</h4><p>Claude and ChatGPT for copy drafting, brief interpretation, content iteration, and messaging refinement across all asset types.</p></div>
+        <div class="ai-card"><h4>Daily Trends and Topic Research</h4><p>Using Perplexity and AI-powered search to track industry trends, competitor moves, and content opportunities every morning, feeding directly into content calendars and campaign angles.</p></div>
+        <div class="ai-card"><h4>SEO Research at Speed</h4><p>AI-assisted keyword clustering, SERP analysis, and content gap identification. Research cycles cut from days to hours.</p></div>
+        <div class="ai-card"><h4>Email Personalisation at Scale</h4><p>Generating copy variation across persona segments without producing generic content, sequenced and structured for each ICP.</p></div>
+        <div class="ai-card"><h4>Custom Marketing Tools</h4><p>Built and deployed custom AI-powered workflows using the Claude API, Zoho, and Zapier to automate research, reporting, and content production cycles.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="ci">
+      <p class="label">Contact</p>
+      <div class="bar"></div>
+      <h2>Let's talk</h2>
+      <p>Open to marketing roles, contract work, and freelance projects. If you need someone who hits the ground running across content, campaigns, and demand generation, reach out.</p>
+      <div class="c-links">
+        <a href="mailto:varunchangappa11@gmail.com" class="c-link">Email</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>Varun Changappa &nbsp;·&nbsp; Strategic Marketing Professional &nbsp;·&nbsp; 2026</footer>
+
+</body>
+</html>
