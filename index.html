@@ -207,8 +207,13 @@
   color: var(--accent);
   text-transform: uppercase;
   letter-spacing: 0.8px;
-}
 
+  /* consistency fix */
+  line-height: 1.2;
+  min-height: 32px; /* forces equal height */
+  display: flex;
+  align-items: flex-start;
+}
 .rec-text {
   font-size: 0.82rem;
   color: var(--mid);
@@ -275,6 +280,7 @@
     <li><a href="#skills">Skills</a></li>
     <li><a href="#tools">Tools</a></li>
     <li><a href="#certifications">Credentials</a></li>
+    <li><a href="#recommendations">Recommendations</a></li>
   </ul>
   <a href="mailto:varunchangappa11@gmail.com" class="nav-cta">Get in Touch</a>
 </nav>
@@ -752,15 +758,18 @@
 </section>
 
 <!-- RECOMMENDATIONS SLIDER -->
-<section class="recs-sec" id="recommendations">
-  <div class="container">
-    <div class="recs-header">
-      <div>
-        <p class="label">Recommendations</p>
-        <div class="bar"></div>
-        <h2 class="title">What others have said</h2>
-      </div>
-    </div>
+<div class="recs-header">
+  <div>
+    <p class="label">Recommendations</p>
+    <div class="bar"></div>
+    <h2 class="title">Trusted by peers & mentors</h2>
+  </div>
+
+  <div class="recs-nav">
+    <button class="recs-arrow" onclick="scrollRecs(-1)">←</button>
+    <button class="recs-arrow" onclick="scrollRecs(1)">→</button>
+  </div>
+</div>
 
     <div class="recs-slider" id="recsSlider">
       <div class="recs-track" id="recsTrack">
