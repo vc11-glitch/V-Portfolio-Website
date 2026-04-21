@@ -86,13 +86,9 @@
   position: relative;
 }
 
-/* IMAGE LAYER */
+/* IMAGE LAYER (CLEAN ORIGINAL) */
 .hero-image-wrap {
   position: relative;
-  perspective: 1200px;
-  transform: translateY(10px);
-  animation: float 6s ease-in-out infinite;
-  transform-style: preserve-3d;
 }
 
 .hero-image-wrap img {
@@ -104,36 +100,11 @@
   box-shadow: 0 40px 120px rgba(0,0,0,0.55);
   filter: contrast(1.05) saturate(1.05);
 
-  transition: transform 0.15s ease-out;
-  will-change: transform;
-  transform: perspective(1200px);
-}
-    
-.hero-image-wrap {
-  perspective: 1200px;
-  transform-style: preserve-3d;
+  transform: none;
+  transition: none;
 }
 
-/* glow layer behind image */
-.hero-image-wrap::before {
-  content: "";
-  position: absolute;
-  inset: -30px;
-  background: radial-gradient(circle, rgba(37,99,235,0.4), transparent 60%);
-  filter: blur(30px);
-  z-index: -1;
-}
 
-/* animations */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(18px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes float {
-  0%,100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-}
 
     .stats-row{display:flex;border-top:1px solid rgba(255,255,255,0.07);padding-top:2.5rem;flex-wrap:wrap;gap:0}
     .stat{flex:1;min-width:130px}
@@ -397,14 +368,27 @@
         <a href="#contact" class="btn-g">Get in Touch</a>
       </div>
 
-      <div class="stats-row">
-        ...
-      </div>
-    </div>
+.btn-p {
+  background: var(--accent);
+  color: white;
+  padding: 0.72rem 1.4rem;
+  border-radius: 7px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+}
 
-    <div class="hero-visual">
-      <div class="hero-image-wrap">
-        <img src=Varun.png alt="Varun">
+.btn-g {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.3);
+  color: white;
+  padding: 0.72rem 1.4rem;
+  border-radius: 7px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+}
+        ...
       </div>
     </div>
 
@@ -980,6 +964,7 @@ let autoScroll;
 
 function scrollRecs(direction) {
   const card = track.querySelector('.rec-card');
+  if (!card) return;
   const scrollAmount = card.offsetWidth + 16;
   track.scrollBy({ left: scrollAmount * direction, behavior: 'smooth' });
 }
@@ -987,6 +972,7 @@ function scrollRecs(direction) {
 function startAutoScroll() {
   autoScroll = setInterval(() => {
     const card = track.querySelector('.rec-card');
+    if (!card) return;
     const scrollAmount = card.offsetWidth + 16;
 
     if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 5) {
@@ -1006,7 +992,7 @@ track.addEventListener('mouseleave', startAutoScroll);
 
 startAutoScroll();
 </script>
-</section>
+
 
 <!-- CONTACT -->
 <section class="contact" id="contact">
@@ -1024,44 +1010,6 @@ startAutoScroll();
 </section>
 
 <footer>Varun Changappa &nbsp;·&nbsp; Strategic Marketing Professional &nbsp;·&nbsp; 2026</footer>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const heroWrap = document.querySelector(".hero-image-wrap");
-  const heroImg = document.querySelector(".hero-image-wrap img");
-
-  if (!heroWrap || !heroImg) return;
-
-  heroWrap.addEventListener("mousemove", (e) => {
-    const rect = heroWrap.getBoundingClientRect();
-
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-
-    const rotateX = ((y - centerY) / centerY) * -8;
-    const rotateY = ((x - centerX) / centerX) * 10;
-
-    heroImg.style.transform = `
-      perspective(1200px)
-      rotateX(${rotateX}deg)
-      rotateY(${rotateY}deg)
-      scale(1.03)
-    `;
-  });
-
-  heroWrap.addEventListener("mouseleave", () => {
-    heroImg.style.transform = `
-      perspective(1200px)
-      rotateX(0deg)
-      rotateY(0deg)
-      scale(1)
-    `;
-  });
-});
-</script>
   
 </body>
 </html>
