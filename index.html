@@ -89,8 +89,10 @@
 /* IMAGE LAYER */
 .hero-image-wrap {
   position: relative;
+  perspective: 1200px;
   transform: translateY(10px);
   animation: float 6s ease-in-out infinite;
+  transform-style: preserve-3d;
 }
 
 .hero-image-wrap img {
@@ -102,13 +104,14 @@
   box-shadow: 0 40px 120px rgba(0,0,0,0.55);
   filter: contrast(1.05) saturate(1.05);
 
-  transform: perspective(900px) rotateY(-6deg);
-  transition: transform 0.4s ease;
+  transition: transform 0.15s ease-out;
+  will-change: transform;
+  transform: perspective(1200px);
 }
-
-/* hover micro-interaction */
-.hero-image-wrap img:hover {
-  transform: perspective(900px) rotateY(0deg) scale(1.02);
+    
+.hero-image-wrap {
+  perspective: 1200px;
+  transform-style: preserve-3d;
 }
 
 /* glow layer behind image */
@@ -1023,41 +1026,40 @@ startAutoScroll();
 <footer>Varun Changappa &nbsp;·&nbsp; Strategic Marketing Professional &nbsp;·&nbsp; 2026</footer>
 
 <script>
-const track = document.getElementById('recsTrack');
-let autoScroll;
+document.addEventListener("DOMContentLoaded", () => {
+  const heroWrap = document.querySelector(".hero-image-wrap");
+  const heroImg = document.querySelector(".hero-image-wrap img");
 
-function startAutoScroll() {
-  autoScroll = setInterval(() => {
-    const card = track.querySelector('.rec-card');
-    const scrollAmount = card.offsetWidth + 16;
+  if (!heroWrap || !heroImg) return;
 
-    if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 5) {
-      track.scrollTo({ left: 0, behavior: 'smooth' });
-    } else {
-      track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    }
-  }, 3000);
-}
+  heroWrap.addEventListener("mousemove", (e) => {
+    const rect = heroWrap.getBoundingClientRect();
 
-function stopAutoScroll() {
-  clearInterval(autoScroll);
-}
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
 
-track.addEventListener('mouseenter', stopAutoScroll);
-track.addEventListener('mouseleave', startAutoScroll);
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
 
-startAutoScroll();
-</script>
+    const rotateX = ((y - centerY) / centerY) * -8;
+    const rotateY = ((x - centerX) / centerX) * 10;
 
-  <script>
-const hero = document.querySelector(".hero-image-wrap");
+    heroImg.style.transform = `
+      perspective(1200px)
+      rotateX(${rotateX}deg)
+      rotateY(${rotateY}deg)
+      scale(1.03)
+    `;
+  });
 
-window.addEventListener("scroll", () => {
-  const scrollY = window.scrollY;
-
-  if (hero) {
-    hero.style.transform = `translateY(${scrollY * 0.08}px)`;
-  }
+  heroWrap.addEventListener("mouseleave", () => {
+    heroImg.style.transform = `
+      perspective(1200px)
+      rotateX(0deg)
+      rotateY(0deg)
+      scale(1)
+    `;
+  });
 });
 </script>
   
