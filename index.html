@@ -42,16 +42,95 @@
     .sub{color:var(--mid);font-size:0.88rem;margin-bottom:2.5rem;max-width:480px;line-height:1.7}
 
     /* HERO */
-    .hero{padding:150px 0 96px;background:var(--navy)}
-    .hero-inner{max-width:1140px;margin:0 auto;padding:0 2rem}
-    .hero h1{font-size:clamp(2.4rem,5.5vw,4rem);font-weight:900;color:var(--white);letter-spacing:-2px;line-height:1.08;margin-bottom:1.2rem}
-    .hero h1 em{color:#60a5fa;font-style:normal}
-    .hero-sub{font-size:1rem;color:#94a3b8;max-width:480px;line-height:1.75;margin-bottom:2.5rem}
-    .hero-btns{display:flex;gap:0.8rem;flex-wrap:wrap;margin-bottom:4.5rem}
-    .btn-p{background:var(--accent);color:var(--white);padding:0.72rem 1.6rem;border-radius:7px;font-weight:600;font-size:0.87rem;text-decoration:none;transition:background 0.2s}
-    .btn-p:hover{background:var(--accent-dark)}
-    .btn-g{background:transparent;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.85);padding:0.72rem 1.6rem;border-radius:7px;font-weight:600;font-size:0.87rem;text-decoration:none;transition:border-color 0.2s}
-    .btn-g:hover{border-color:rgba(255,255,255,0.45)}
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 150px 0 96px;
+  background: var(--navy);
+}
+
+/* soft animated gradient background */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 20%, rgba(37,99,235,0.25), transparent 40%),
+              radial-gradient(circle at 80% 30%, rgba(96,165,250,0.18), transparent 45%);
+  filter: blur(20px);
+  animation: floatBg 12s ease-in-out infinite alternate;
+}
+
+@keyframes floatBg {
+  0% { transform: translateY(0px) scale(1); }
+  100% { transform: translateY(-20px) scale(1.05); }
+}
+
+.hero-inner {
+  position: relative;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 2rem;
+
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.hero-content {
+  animation: fadeUp 1s ease forwards;
+}
+
+.hero-visual {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+/* IMAGE LAYER */
+.hero-image-wrap {
+  position: relative;
+  transform: translateY(10px);
+  animation: float 6s ease-in-out infinite;
+}
+
+.hero-image-wrap img {
+  width: 340px;
+  height: 440px;
+  object-fit: cover;
+  border-radius: 20px;
+
+  box-shadow: 0 40px 120px rgba(0,0,0,0.55);
+  filter: contrast(1.05) saturate(1.05);
+
+  transform: perspective(900px) rotateY(-6deg);
+  transition: transform 0.4s ease;
+}
+
+/* hover micro-interaction */
+.hero-image-wrap img:hover {
+  transform: perspective(900px) rotateY(0deg) scale(1.02);
+}
+
+/* glow layer behind image */
+.hero-image-wrap::before {
+  content: "";
+  position: absolute;
+  inset: -30px;
+  background: radial-gradient(circle, rgba(37,99,235,0.4), transparent 60%);
+  filter: blur(30px);
+  z-index: -1;
+}
+
+/* animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
 
     .stats-row{display:flex;border-top:1px solid rgba(255,255,255,0.07);padding-top:2.5rem;flex-wrap:wrap;gap:0}
     .stat{flex:1;min-width:130px}
@@ -302,31 +381,30 @@
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-bg"></div>
+
   <div class="hero-inner">
-    <h1>Hi, I'm Varun,<br/>a <em>Strategic Marketing</em><br/>Professional</h1>
-    <p class="hero-sub">I build marketing programmes that convert, from first impression to closed deal, across content, campaigns, and paid media.</p>
-    <div class="hero-btns">
-      <a href="#work" class="btn-p">View My Work</a>
-      <a href="#contact" class="btn-g">Get in Touch</a>
-    </div>
-    <div class="stats-row">
-      <div class="stat">
-        <span class="stat-n">40%</span>
-        <span class="stat-d">Conversion rate uplift on paid campaigns</span>
+
+    <div class="hero-content">
+      <h1>Hi, I'm Varun,<br/>a <em>Strategic Marketing</em><br/>Professional</h1>
+      <p class="hero-sub">I build marketing programmes that convert, from first impression to closed deal, across content, campaigns, and paid media.</p>
+
+      <div class="hero-btns">
+        <a href="#work" class="btn-p">View My Work</a>
+        <a href="#contact" class="btn-g">Get in Touch</a>
       </div>
-      <div class="stat">
-        <span class="stat-n">10x</span>
-        <span class="stat-d">Press release views vs. benchmark</span>
-      </div>
-      <div class="stat">
-        <span class="stat-n">29%</span>
-        <span class="stat-d">Revenue increase from marketing activity</span>
-      </div>
-      <div class="stat">
-        <span class="stat-n">72%</span>
-        <span class="stat-d">Peak email newsletter open rate</span>
+
+      <div class="stats-row">
+        ...
       </div>
     </div>
+
+    <div class="hero-visual">
+      <div class="hero-image-wrap">
+        <img src=Varun.png alt="Varun">
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -969,6 +1047,18 @@ track.addEventListener('mouseenter', stopAutoScroll);
 track.addEventListener('mouseleave', startAutoScroll);
 
 startAutoScroll();
+</script>
+
+  <script>
+const hero = document.querySelector(".hero-image-wrap");
+
+window.addEventListener("scroll", () => {
+  const scrollY = window.scrollY;
+
+  if (hero) {
+    hero.style.transform = `translateY(${scrollY * 0.08}px)`;
+  }
+});
 </script>
   
 </body>
