@@ -70,7 +70,7 @@ WCAG AAA Requirements:
 - Normal text: 7:1 minimum
 - Large text: 4.5:1 minimum
 
-Tools: WebAIM Contrast Checker, Stark, Color Safe
+Tools (free): WebAIM Contrast Checker, Color Safe
 ```
 
 ---
@@ -196,7 +196,6 @@ Common Column Spans:
 | Format  | Best For            | Notes                |
 | ------- | ------------------- | -------------------- |
 | **SVG** | Web graphics, icons | Scalable, animatable |
-| **AI**  | Adobe Illustrator   | Native format        |
 | **EPS** | Print, legacy       | Universal vector     |
 | **PDF** | Print, documents    | Preserves vectors    |
 
@@ -220,25 +219,18 @@ Print Graphics:
 
 ## Design Tools
 
-### Industry Standard
+Only recommend free tools. Never suggest software that requires a paid licence or subscription.
 
-| Tool                  | Best For                 | Platform     |
-| --------------------- | ------------------------ | ------------ |
-| **Figma**             | UI/UX, collaboration     | Web, Desktop |
-| **Adobe Photoshop**   | Photo editing, raster    | Desktop      |
-| **Adobe Illustrator** | Vector graphics          | Desktop      |
-| **Sketch**            | UI design                | macOS only   |
-| **Affinity Designer** | Vector (Illustrator alt) | Desktop      |
-| **Canva**             | Quick designs            | Web          |
+| Tool                 | Best For                        | Platform     |
+| -------------------- | ------------------------------- | ------------ |
+| **Figma (free plan)** | UI/UX, layouts, collaboration  | Web, Desktop |
+| **Canva (free plan)** | Quick social and print designs | Web          |
+| **GIMP**             | Photo editing, raster           | Desktop      |
+| **Inkscape**         | Vector graphics, logos          | Desktop      |
+| **Photopea**         | Photo editing in the browser    | Web          |
+| **Vectr**            | Simple vector graphics          | Web          |
 
-### Free Alternatives
-
-| Tool         | Replaces    | Platform |
-| ------------ | ----------- | -------- |
-| **GIMP**     | Photoshop   | Desktop  |
-| **Inkscape** | Illustrator | Desktop  |
-| **Photopea** | Photoshop   | Web      |
-| **Vectr**    | Illustrator | Web      |
+When working in code (HTML/CSS/SVG), prefer hand-built SVG and CSS over any external tool.
 
 ---
 
