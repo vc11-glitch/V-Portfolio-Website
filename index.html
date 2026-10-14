@@ -4,15 +4,21 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Varun Changappa | Strategic Marketing Professional</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <meta name="description" content="Varun Changappa, B2B marketing manager in Dublin. Content, campaigns, email, paid media and demand generation."/>
+  <meta name="theme-color" content="#0d1b2a"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{
       --navy:#0d1b2a;--navy-mid:#162032;--accent:#2563eb;--accent-dark:#1d4ed8;
       --accent-pale:#eff6ff;--text:#1e293b;--mid:#64748b;--light:#94a3b8;
       --border:#e2e8f0;--white:#fff;--surface:#f8fafc;
+      --sky:#60a5fa;--serif:'Instrument Serif',Georgia,serif;
+      --ease:cubic-bezier(.2,.7,.2,1);
     }
-    html{scroll-behavior:smooth}
+    html{scroll-behavior:smooth;scroll-padding-top:72px}
+    ::selection{background:var(--accent);color:var(--white)}
+    :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
     body{font-family:'Inter',sans-serif;color:var(--text);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
 
     /* NAV */
@@ -29,7 +35,9 @@
     .nav-name{font-weight:700;font-size:0.92rem;color:var(--navy);letter-spacing:-0.2px}
     .nav-links{display:flex;gap:1.75rem;list-style:none}
     .nav-links a{text-decoration:none;color:var(--mid);font-size:0.82rem;font-weight:500;transition:color 0.15s}
-    .nav-links a:hover{color:var(--accent)}
+    .nav-links a:hover,.nav-links a.active{color:var(--accent)}
+    .nav-links a{position:relative}
+    .nav-links a.active::after{content:'';position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--accent);border-radius:2px}
     .nav-cta{background:var(--navy);color:var(--white);padding:0.42rem 1.1rem;border-radius:6px;font-size:0.8rem;font-weight:600;text-decoration:none;transition:opacity 0.2s}
     .nav-cta:hover{opacity:0.8}
 
@@ -37,35 +45,47 @@
     .container{max-width:1140px;margin:0 auto;padding:0 2rem}
     section{padding:88px 0}
     .label{font-size:0.67rem;font-weight:700;text-transform:uppercase;letter-spacing:1.8px;color:var(--accent);margin-bottom:0.85rem}
-    .title{font-size:clamp(1.55rem,2.8vw,2rem);font-weight:800;color:var(--navy);letter-spacing:-0.5px;line-height:1.15;margin-bottom:1.75rem}
+    .label .num{color:var(--light);margin-right:0.5rem;font-variant-numeric:tabular-nums}
+    .title em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:0;color:var(--accent)}
+    .title{font-size:clamp(1.7rem,3.2vw,2.4rem);font-weight:800;color:var(--navy);letter-spacing:-0.5px;line-height:1.15;margin-bottom:1.75rem}
     .bar{width:34px;height:3px;background:var(--accent);border-radius:2px;margin-bottom:1.75rem}
     .sub{color:var(--mid);font-size:0.88rem;margin-bottom:2.5rem;max-width:480px;line-height:1.7}
 
     /* HERO */
-    .hero{padding:150px 0 96px;background:var(--navy)}
+    .hero{padding:150px 0 96px;background:var(--navy);position:relative;overflow:hidden;isolation:isolate}
+    .hero::before{content:'';position:absolute;inset:0;z-index:-1;
+      background-image:linear-gradient(rgba(255,255,255,0.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.035) 1px,transparent 1px);
+      background-size:56px 56px;-webkit-mask-image:radial-gradient(ellipse 80% 70% at 70% 30%,#000 30%,transparent 75%);mask-image:radial-gradient(ellipse 80% 70% at 70% 30%,#000 30%,transparent 75%)}
+    .hero::after{content:'';position:absolute;z-index:-1;width:720px;height:720px;right:-180px;top:-260px;border-radius:50%;
+      background:radial-gradient(circle,rgba(37,99,235,0.45),rgba(96,165,250,0.12) 45%,transparent 70%);filter:blur(10px)}
     .hero-inner{max-width:1140px;margin:0 auto;padding:0 2rem}
+    .hero-badge{display:inline-flex;align-items:center;gap:0.55rem;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);color:#cbd5e1;font-size:0.75rem;font-weight:500;padding:0.38rem 0.85rem 0.38rem 0.7rem;border-radius:999px;margin-bottom:1.75rem}
+    .pulse{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 0 rgba(34,197,94,0.6);animation:pulse 2.2s infinite}
+    @keyframes pulse{70%{box-shadow:0 0 0 8px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
     .hero h1{font-size:clamp(2.4rem,5.5vw,4rem);font-weight:900;color:var(--white);letter-spacing:-2px;line-height:1.08;margin-bottom:1.2rem}
-    .hero h1 em{color:#60a5fa;font-style:normal}
+    .hero h1 em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-0.5px;background:linear-gradient(100deg,#93c5fd,#60a5fa 40%,#a5b4fc);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:0.08em}
     .hero-sub{font-size:1rem;color:#94a3b8;max-width:480px;line-height:1.75;margin-bottom:2.5rem}
     .hero-btns{display:flex;gap:0.8rem;flex-wrap:wrap;margin-bottom:4.5rem}
-    .btn-p{background:var(--accent);color:var(--white);padding:0.72rem 1.6rem;border-radius:7px;font-weight:600;font-size:0.87rem;text-decoration:none;transition:background 0.2s}
-    .btn-p:hover{background:var(--accent-dark)}
+    .btn-p{background:var(--accent);color:var(--white);padding:0.72rem 1.6rem;border-radius:7px;font-weight:600;font-size:0.87rem;text-decoration:none;transition:background 0.2s,transform 0.2s var(--ease),box-shadow 0.2s}
+    .btn-p:hover{background:var(--accent-dark);transform:translateY(-1px);box-shadow:0 8px 24px rgba(37,99,235,0.35)}
     .btn-g{background:transparent;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.85);padding:0.72rem 1.6rem;border-radius:7px;font-weight:600;font-size:0.87rem;text-decoration:none;transition:border-color 0.2s}
     .btn-g:hover{border-color:rgba(255,255,255,0.45)}
  
     .stats-row{display:flex;border-top:1px solid rgba(255,255,255,0.07);padding-top:2.5rem;flex-wrap:wrap;gap:0}
     .stat{flex:1;min-width:130px}
     .stat:not(:first-child){padding-left:2.5rem;border-left:1px solid rgba(255,255,255,0.07)}
-    .stat-n{font-size:2.2rem;font-weight:900;color:#60a5fa;letter-spacing:-1.5px;display:block;line-height:1;margin-bottom:0.35rem}
-    .stat-d{font-size:0.73rem;color:#64748b;line-height:1.4;max-width:140px}
+    .stat-n{font-size:2.6rem;font-weight:900;color:var(--white);font-variant-numeric:tabular-nums;letter-spacing:-1.5px;display:block;line-height:1;margin-bottom:0.35rem}
+    .stat-d{font-size:0.73rem;color:#8a9bb3;line-height:1.4;max-width:140px}
 
     /* ABOUT */
     .about{background:var(--surface)}
     .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+    .about-body p:first-child{font-family:var(--serif);font-size:1.6rem;line-height:1.35;color:var(--navy);margin-bottom:1.4rem}
     .about-body p{font-size:0.92rem;color:var(--mid);line-height:1.85}
     .about-body p+p{margin-top:0.9rem}
     .about-pills{display:flex;flex-direction:column;gap:0.6rem}
-    .a-pill{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:0.9rem 1.1rem;display:flex;align-items:flex-start;gap:0.8rem}
+    .a-pill{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:0.9rem 1.1rem;display:flex;align-items:flex-start;gap:0.8rem;transition:transform 0.25s var(--ease),box-shadow 0.25s,border-color 0.2s}
+    .a-pill:hover{transform:translateX(4px);border-color:#bfdbfe;box-shadow:0 6px 20px rgba(37,99,235,0.08)}
     .a-bar{width:3px;min-height:36px;background:var(--accent);border-radius:2px;flex-shrink:0;align-self:stretch}
     .a-label{font-size:0.82rem;font-weight:700;color:var(--navy)}
     .a-desc{font-size:0.74rem;color:var(--mid);margin-top:0.1rem;line-height:1.5}
@@ -77,7 +97,10 @@
     .tl-item:last-child{padding-bottom:0}
     .tl-dot{position:absolute;left:-1.5rem;top:11px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:2.5px solid var(--white);box-shadow:0 0 0 2px var(--accent);flex-shrink:0}
     .tl-logo{width:46px;height:46px;border-radius:10px;border:1px solid var(--border);background:var(--white);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0}
-    .tl-logo img{width:34px;height:34px;object-fit:contain}
+    .tl-logo{position:relative;font-size:0.8rem;font-weight:800;color:var(--navy);background:var(--accent-pale)}
+    .tl-logo img{position:absolute;inset:0;margin:auto;width:34px;height:34px;object-fit:contain;background:var(--white)}
+    .tl-item{transition:transform 0.25s var(--ease)}
+    .tl-item:hover{transform:translateX(4px)}
     .tl-co{font-size:1rem;font-weight:800;color:var(--navy);line-height:1.2}
     .tl-role{font-size:0.82rem;font-weight:600;color:var(--accent);margin-top:0.2rem}
     .tl-period{font-size:0.72rem;color:var(--light);margin-top:0.2rem}
@@ -86,7 +109,8 @@
     .work{background:var(--surface)}
     .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
     .wcard{background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow 0.2s,transform 0.2s}
-    .wcard:hover{box-shadow:0 10px 36px rgba(0,0,0,0.08);transform:translateY(-3px)}
+    .wcard:hover{box-shadow:0 18px 44px rgba(13,27,42,0.12);transform:translateY(-4px)}
+    .wcard{transition:box-shadow 0.3s,transform 0.3s var(--ease)}
 
 
     /* card content */
@@ -103,13 +127,24 @@
     .wlink{font-size:0.73rem;font-weight:600;color:var(--accent);text-decoration:none;white-space:nowrap}
     .wlink:hover{text-decoration:underline}
     .wlinks{display:flex;gap:0.75rem;flex-wrap:wrap}
-    .wlinks a{font-size:0.7rem;font-weight:600;color:var(--accent);text-decoration:none}
-    .wlinks a:hover{text-decoration:underline}
+    .wlinks{gap:0.35rem}
+    .wlinks a{font-size:0.68rem;font-weight:600;color:var(--accent);text-decoration:none;background:var(--accent-pale);border:1px solid #dbeafe;padding:0.18rem 0.5rem;border-radius:999px;min-width:24px;text-align:center;transition:background 0.15s,color 0.15s}
+    .wlinks a:hover{background:var(--accent);color:var(--white)}
 
     /* WORK CARD TEXT BANNER */
-    .wcard-banner{height:110px;background:var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.35rem;border-bottom:1px solid var(--border)}
-    .wcat-name{font-size:1.05rem;font-weight:800;color:var(--white);letter-spacing:-0.3px;text-align:center}
-    .wcat-count{font-size:0.6rem;font-weight:700;color:#60a5fa;letter-spacing:1.8px;text-transform:uppercase}
+    .wcard-banner{height:132px;background:var(--navy);display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:0.3rem;padding:1rem 1.1rem;position:relative;overflow:hidden;isolation:isolate}
+    .wcard-banner::before{content:'';position:absolute;inset:0;z-index:-1;background:var(--g,linear-gradient(135deg,#0d1b2a,#1e3a8a));transition:transform 0.6s var(--ease)}
+    .wcard-banner::after{content:attr(data-n);position:absolute;right:0.9rem;top:0.2rem;z-index:-1;font-family:var(--serif);font-style:italic;font-size:5.5rem;line-height:1;color:rgba(255,255,255,0.14)}
+    .wcard:hover .wcard-banner::before{transform:scale(1.08)}
+    .wcard:nth-child(1){--g:linear-gradient(135deg,#0d1b2a 0%,#1e3a8a 100%)}
+    .wcard:nth-child(2){--g:linear-gradient(135deg,#111827 0%,#4338ca 100%)}
+    .wcard:nth-child(3){--g:linear-gradient(135deg,#0c1a2e 0%,#2563eb 100%)}
+    .wcard:nth-child(4){--g:linear-gradient(135deg,#0f172a 0%,#0e7490 100%)}
+    .wcard:nth-child(5){--g:linear-gradient(135deg,#1e1b4b 0%,#7c3aed 100%)}
+    .wcard:nth-child(6){--g:linear-gradient(135deg,#0d1b2a 0%,#0369a1 100%)}
+    .wcard:nth-child(7){--g:linear-gradient(135deg,#172554 0%,#4f46e5 100%)}
+    .wcat-name{font-size:1.25rem;font-weight:800;color:var(--white);letter-spacing:-0.4px}
+    .wcat-count{font-size:0.6rem;font-weight:700;color:#bfdbfe;letter-spacing:1.8px;text-transform:uppercase}
 
     /* TECH STACK */
     .tools-sec{background:var(--surface)}
@@ -146,9 +181,13 @@
     .ai-left p{font-size:0.88rem;color:#94a3b8;line-height:1.8}
     .ai-left p+p{margin-top:0.85rem}
     .ai-cards{display:flex;flex-direction:column;gap:0.6rem}
-    .ai-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:9px;padding:0.9rem 1.1rem}
+    .ai-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:0.9rem 1.1rem;transition:border-color 0.2s,background 0.2s}
+    .ai-card:hover{border-color:rgba(96,165,250,0.4);background:rgba(96,165,250,0.06)}
+    .ai-sec{position:relative;overflow:hidden;isolation:isolate}
+    .ai-sec::after{content:'';position:absolute;z-index:-1;width:600px;height:600px;left:-220px;bottom:-300px;border-radius:50%;background:radial-gradient(circle,rgba(37,99,235,0.3),transparent 65%)}
+    .ai-sec .title em{color:var(--sky)}
     .ai-card h4{font-size:0.82rem;font-weight:700;color:#e2e8f0;margin-bottom:0.2rem}
-    .ai-card p{font-size:0.75rem;color:#64748b;line-height:1.55}
+    .ai-card p{font-size:0.75rem;color:#8a9bb3;line-height:1.55}
     .ai-ctas{display:flex;gap:0.8rem;flex-wrap:wrap;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.07)}
     .btn-a{background:var(--accent);color:var(--white);padding:0.72rem 1.6rem;border-radius:7px;font-weight:600;font-size:0.87rem;text-decoration:none;transition:background 0.2s}
     .btn-a:hover{background:var(--accent-dark)}
@@ -160,7 +199,20 @@
 
 .recs-header {
   margin-bottom: 2rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
 }
+.recs-header .title { margin-bottom: 0; }
+.recs-nav { display: flex; gap: 0.5rem; }
+.recs-arrow {
+  width: 42px; height: 42px; border-radius: 50%;
+  border: 1px solid var(--border); background: var(--white);
+  color: var(--navy); font-size: 1rem; cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.recs-arrow:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
 
 /* slider */
 .recs-slider {
@@ -192,9 +244,17 @@
   scroll-snap-align: start;
   flex-shrink: 0;
   display: flex;
+  position: relative;
+  transition: box-shadow 0.25s, border-color 0.2s;
 }
+.rec-card::before {
+  content: '\201C'; position: absolute; right: 1rem; top: 0.2rem;
+  font-family: var(--serif); font-size: 4.5rem; line-height: 1; color: var(--accent-pale);
+}
+.rec-card:hover { border-color: #bfdbfe; box-shadow: 0 10px 30px rgba(13,27,42,0.08); }
 
 .rec-body {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
@@ -251,16 +311,31 @@
 }
     
     /* CONTACT */
-    .contact{padding:88px 0}
-    .ci h2{font-size:1.8rem;font-weight:800;color:var(--navy);letter-spacing:-0.5px;margin-bottom:0.55rem}
-    .ci p{font-size:0.88rem;color:var(--mid);line-height:1.75;margin-bottom:1.5rem;max-width:480px}
+    .contact{padding:0 0 88px}
+    .ci{background:var(--navy);border-radius:20px;padding:clamp(2rem,5vw,3.75rem);position:relative;overflow:hidden;isolation:isolate}
+    .ci::after{content:'';position:absolute;z-index:-1;width:520px;height:520px;right:-160px;top:-240px;border-radius:50%;background:radial-gradient(circle,rgba(37,99,235,0.5),transparent 65%)}
+    .ci .label{color:var(--sky)}
+    .ci h2 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--sky)}
+    .ci h2{font-size:clamp(2rem,4.5vw,3rem);font-weight:800;color:var(--white);letter-spacing:-0.5px;margin-bottom:0.55rem}
+    .ci p{font-size:0.95rem;color:#94a3b8;line-height:1.75;margin-bottom:1.5rem;max-width:480px}
     .c-links{display:flex;gap:0.7rem;flex-wrap:wrap}
-    .c-link{display:inline-flex;align-items:center;gap:0.4rem;background:var(--navy);color:var(--white);padding:0.62rem 1.25rem;border-radius:7px;font-size:0.83rem;font-weight:600;text-decoration:none;transition:opacity 0.2s}
-    .c-link:hover{opacity:0.82}
+    .c-link{display:inline-flex;align-items:center;gap:0.4rem;background:var(--accent);color:var(--white);padding:0.62rem 1.25rem;border-radius:7px;font-size:0.83rem;font-weight:600;text-decoration:none;transition:opacity 0.2s}
+    .c-link:hover{background:var(--accent-dark)}
+    .c-link.ghost{background:transparent;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.85)}
+    .c-link.ghost:hover{border-color:rgba(255,255,255,0.45);background:transparent}
     .c-link.out{background:transparent;color:var(--navy);border:1px solid var(--border)}
     .c-link.out:hover{background:var(--surface)}
 
     footer{background:var(--surface);border-top:1px solid var(--border);padding:1.4rem 2rem;text-align:center;font-size:0.71rem;color:var(--light)}
+
+    /* REVEAL */
+    .js .reveal{opacity:0;transform:translateY(18px);transition:opacity 0.7s var(--ease),transform 0.7s var(--ease)}
+    .js .reveal.in{opacity:1;transform:none}
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{animation:none!important;transition:none!important}
+      .js .reveal{opacity:1;transform:none}
+    }
 
     /* RESPONSIVE */
     @media(max-width:1000px){
@@ -273,10 +348,15 @@
       .nav-links{display:none}
       .stats-row{gap:2rem}
       .stat:not(:first-child){border-left:none;padding-left:0}
+      .stats-row .stat{flex:1 1 40%}
+      .hero{padding:120px 0 72px}
+      .recs-header{flex-direction:column;align-items:flex-start}
+      .rec-card{min-width:280px;max-width:280px}
     }
   </style>
 </head>
 <body>
+<script>document.documentElement.classList.add('js')</script>
 
 <!-- NAV -->
 <nav>
@@ -303,6 +383,7 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
+    <div class="hero-badge"><span class="pulse"></span>Open to marketing roles &middot; Dublin, Ireland</div>
     <h1>Hi, I'm Varun,<br/>a <em>Strategic Marketing</em><br/>Professional</h1>
     <p class="hero-sub">I build marketing programmes that convert, from first impression to closed deal, across content, campaigns, and paid media.</p>
     <div class="hero-btns">
@@ -332,7 +413,7 @@
 <!-- ABOUT -->
 <section class="about" id="about">
   <div class="container">
-    <p class="label">About</p>
+    <p class="label"><span class="num">01</span>About</p>
     <div class="bar"></div>
     <div class="about-grid">
       <div class="about-body">
@@ -353,14 +434,14 @@
 <!-- EXPERIENCE -->
 <section id="experience">
   <div class="container">
-    <p class="label">Experience</p>
+    <p class="label"><span class="num">02</span>Experience</p>
     <div class="bar"></div>
-    <h2 class="title">Brand I have worked with</h2>
+    <h2 class="title">Brands I have <em>worked with</em></h2>
     <div class="tl-wrap">
 
       <div class="tl-item">
         <div class="tl-dot"></div>
-        <div class="tl-logo"><img src="https://logo.clearbit.com/alison.com" alt="Alison" onerror="this.closest('.tl-logo').style.visibility='hidden'"/></div>
+        <div class="tl-logo">AL<img src="https://logo.clearbit.com/alison.com" alt="Alison" onerror="this.remove()"/></div>
         <div>
           <div class="tl-co">Alison</div>
           <div class="tl-role"> B2B Marketing Manager</div>
@@ -370,7 +451,7 @@
 
       <div class="tl-item">
         <div class="tl-dot"></div>
-        <div class="tl-logo"><img src="https://logo.clearbit.com/greyhoundrecycling.com" alt="Greyhound Recycling" onerror="this.closest('.tl-logo').style.visibility='hidden'"/></div>
+        <div class="tl-logo">GR<img src="https://logo.clearbit.com/greyhoundrecycling.com" alt="Greyhound Recycling" onerror="this.remove()"/></div>
         <div>
           <div class="tl-co">Greyhound Recycling</div>
           <div class="tl-role">Sales Campaign Specialist</div>
@@ -380,7 +461,7 @@
 
       <div class="tl-item">
         <div class="tl-dot"></div>
-        <div class="tl-logo"><img src="https://logo.clearbit.com/teamsuccesso.com" alt="Teamsuccesso" onerror="this.closest('.tl-logo').style.visibility='hidden'"/></div>
+        <div class="tl-logo">TS<img src="https://logo.clearbit.com/teamsuccesso.com" alt="Teamsuccesso" onerror="this.remove()"/></div>
         <div>
           <div class="tl-co">Teamsuccesso Pvt. Ltd.</div>
           <div class="tl-role">Digital Marketing Executive</div>
@@ -390,7 +471,7 @@
 
       <div class="tl-item">
         <div class="tl-dot"></div>
-        <div class="tl-logo"><img src="https://logo.clearbit.com/kia.com" alt="KIA Motors" onerror="this.closest('.tl-logo').style.visibility='hidden'"/></div>
+        <div class="tl-logo">KIA<img src="https://logo.clearbit.com/kia.com" alt="KIA Motors" onerror="this.remove()"/></div>
         <div>
           <div class="tl-co">KIA Motors</div>
           <div class="tl-role">Sales and Marketing Executive</div>
@@ -405,16 +486,16 @@
 <!-- WORK -->
 <section class="work" id="work">
   <div class="container">
-    <p class="label">Work</p>
+    <p class="label"><span class="num">03</span>Work</p>
     <div class="bar"></div>
-    <h2 class="title">Selected projects</h2>
+    <h2 class="title">Selected <em>projects</em></h2>
     <p class="sub">A selection of my recent work across campaigns, content, and creative. Click any link to open the file in Google Drive.</p>
 
     <div class="work-grid">
 
       <!-- Case Studies: 4 files -->
       <div class="wcard">
-        <div class="wcard-banner">
+        <div class="wcard-banner" data-n="01">
           <div class="wcat-count">4 documents</div>
           <div class="wcat-name">Case Studies</div>
         </div>
@@ -427,17 +508,17 @@
         <div class="wcard-foot">
           <div class="wtags"><span class="wtag">Social proof</span><span class="wtag">Demand gen</span></div>
           <div class="wlinks">
-            <a href="https://drive.google.com/file/d/1v8OfrnvU2hAxUrAvv0K9jJ_Fs6AEuMe6/view" target="_blank">1</a>
-            <a href="https://drive.google.com/file/d/1wYdAvMyDpsWk8LGH2a0IU3Nfgq8VYbbc/view" target="_blank">2</a>
-            <a href="https://drive.google.com/file/d/1bb1FapvcDjVW4NSzWmyPuNmD4pUsjqWj/view" target="_blank">3</a>
-            <a href="https://drive.google.com/file/d/1mZXjBq2Ha6P_N3QC_J8PDLQHjhTqULf_/view" target="_blank">4</a>
+            <a href="https://drive.google.com/file/d/1v8OfrnvU2hAxUrAvv0K9jJ_Fs6AEuMe6/view" target="_blank" rel="noopener">1</a>
+            <a href="https://drive.google.com/file/d/1wYdAvMyDpsWk8LGH2a0IU3Nfgq8VYbbc/view" target="_blank" rel="noopener">2</a>
+            <a href="https://drive.google.com/file/d/1bb1FapvcDjVW4NSzWmyPuNmD4pUsjqWj/view" target="_blank" rel="noopener">3</a>
+            <a href="https://drive.google.com/file/d/1mZXjBq2Ha6P_N3QC_J8PDLQHjhTqULf_/view" target="_blank" rel="noopener">4</a>
           </div>
         </div>
       </div>
 
       <!-- Press Releases: 3 files -->
       <div class="wcard">
-        <div class="wcard-banner">
+        <div class="wcard-banner" data-n="02">
           <div class="wcat-count">3 documents</div>
           <div class="wcat-name">Press Releases</div>
         </div>
@@ -450,16 +531,16 @@
         <div class="wcard-foot">
           <div class="wtags"><span class="wtag">PR writing</span><span class="wtag">Comms</span></div>
           <div class="wlinks">
-            <a href="https://drive.google.com/file/d/1fpx9V75KLJqC04ZJG2YkLVVrMLbZEQsF/view" target="_blank">1</a>
-            <a href="https://drive.google.com/file/d/1449Fhha813oA3IgKZJdURMWQWyeQfsQF/view" target="_blank">2</a>
-            <a href="https://drive.google.com/file/d/1_nXBLMydWxidhyWDZgprG98LvIMb0AGj/view" target="_blank">3</a>
+            <a href="https://drive.google.com/file/d/1fpx9V75KLJqC04ZJG2YkLVVrMLbZEQsF/view" target="_blank" rel="noopener">1</a>
+            <a href="https://drive.google.com/file/d/1449Fhha813oA3IgKZJdURMWQWyeQfsQF/view" target="_blank" rel="noopener">2</a>
+            <a href="https://drive.google.com/file/d/1_nXBLMydWxidhyWDZgprG98LvIMb0AGj/view" target="_blank" rel="noopener">3</a>
           </div>
         </div>
       </div>
 
       <!-- Ad Assets: 5 files -->
       <div class="wcard">
-        <div class="wcard-banner">
+        <div class="wcard-banner" data-n="03">
           <div class="wcat-count">5 creatives</div>
           <div class="wcat-name">Ad Assets</div>
         </div>
@@ -472,18 +553,18 @@
         <div class="wcard-foot">
           <div class="wtags"><span class="wtag">LinkedIn Ads</span><span class="wtag">Google Ads</span><span class="wtag">PMAX</span></div>
           <div class="wlinks">
-            <a href="https://drive.google.com/file/d/1aCb29JN4bDj_TCpuger6LCOqZWOJh0fw/view" target="_blank">1</a>
-            <a href="https://drive.google.com/file/d/1LeXxYv2t0ZSSY8A7pzNbkZyjcVBFDthw/view" target="_blank">2</a>
-            <a href="https://drive.google.com/file/d/16WB2sPFwEkVOmZa4MJoLLpFRrmDp_J1Q/view" target="_blank">3</a>
-            <a href="https://drive.google.com/file/d/11olXYZkICd8n4YKZJ2e1GdqOBu5afOB2/view" target="_blank">4</a>
-            <a href="https://drive.google.com/file/d/1uVcfT2UYDBWFr4nbE-ilvBhTObIOoX-q/view" target="_blank">5</a>
+            <a href="https://drive.google.com/file/d/1aCb29JN4bDj_TCpuger6LCOqZWOJh0fw/view" target="_blank" rel="noopener">1</a>
+            <a href="https://drive.google.com/file/d/1LeXxYv2t0ZSSY8A7pzNbkZyjcVBFDthw/view" target="_blank" rel="noopener">2</a>
+            <a href="https://drive.google.com/file/d/16WB2sPFwEkVOmZa4MJoLLpFRrmDp_J1Q/view" target="_blank" rel="noopener">3</a>
+            <a href="https://drive.google.com/file/d/11olXYZkICd8n4YKZJ2e1GdqOBu5afOB2/view" target="_blank" rel="noopener">4</a>
+            <a href="https://drive.google.com/file/d/1uVcfT2UYDBWFr4nbE-ilvBhTObIOoX-q/view" target="_blank" rel="noopener">5</a>
           </div>
         </div>
       </div>
 
       <!-- Social Media: 4 files -->
       <div class="wcard">
-        <div class="wcard-banner">
+        <div class="wcard-banner" data-n="04">
           <div class="wcat-count">4 posts</div>
           <div class="wcat-name">Social Media</div>
         </div>
@@ -496,17 +577,17 @@
         <div class="wcard-foot">
           <div class="wtags"><span class="wtag">LinkedIn</span><span class="wtag">Organic social</span></div>
           <div class="wlinks">
-            <a href="https://drive.google.com/file/d/1IBc2lS0sAuokJW6gdCxHsO4ixZ9byIA0/view" target="_blank">1</a>
-            <a href="https://drive.google.com/file/d/1VXYlWd0RO6JUMOoKZ5H5IHdUHpFVlLcw/view" target="_blank">2</a>
-            <a href="https://drive.google.com/file/d/16K8tHNondQn_vnN-MB0c310CZZhH5d6g/view" target="_blank">3</a>
-            <a href="https://drive.google.com/file/d/1pEmTi1txzAdMXzP-0o3H0GIwYdi-yEGx/view" target="_blank">4</a>
+            <a href="https://drive.google.com/file/d/1IBc2lS0sAuokJW6gdCxHsO4ixZ9byIA0/view" target="_blank" rel="noopener">1</a>
+            <a href="https://drive.google.com/file/d/1VXYlWd0RO6JUMOoKZ5H5IHdUHpFVlLcw/view" target="_blank" rel="noopener">2</a>
+            <a href="https://drive.google.com/file/d/16K8tHNondQn_vnN-MB0c310CZZhH5d6g/view" target="_blank" rel="noopener">3</a>
+            <a href="https://drive.google.com/file/d/1pEmTi1txzAdMXzP-0o3H0GIwYdi-yEGx/view" target="_blank" rel="noopener">4</a>
           </div>
         </div>
       </div>
 
       <!-- Email Campaigns: 3 files -->
       <div class="wcard">
-        <div class="wcard-banner">
+        <div class="wcard-banner" data-n="05">
           <div class="wcat-count">3 campaigns</div>
           <div class="wcat-name">Email Campaigns</div>
         </div>
@@ -519,16 +600,16 @@
         <div class="wcard-foot">
           <div class="wtags"><span class="wtag">Email marketing</span><span class="wtag">Newsletter</span></div>
           <div class="wlinks">
-            <a href="https://drive.google.com/file/d/16-eOinX7uoWX1DEtvw6TNy8AU9gQ2WtZ/view" target="_blank">Gamified</a>
-            <a href="https://drive.google.com/file/d/1m0zGX0Nb6M8avUMMbVAOnGS20TBhKZ0I/view" target="_blank">Group</a>
-            <a href="https://drive.google.com/file/d/1bz1mq_xNHgNv-dIMwChS4Hpzpzkayt9Y/view" target="_blank">Newsletter</a>
+            <a href="https://drive.google.com/file/d/16-eOinX7uoWX1DEtvw6TNy8AU9gQ2WtZ/view" target="_blank" rel="noopener">Gamified</a>
+            <a href="https://drive.google.com/file/d/1m0zGX0Nb6M8avUMMbVAOnGS20TBhKZ0I/view" target="_blank" rel="noopener">Group</a>
+            <a href="https://drive.google.com/file/d/1bz1mq_xNHgNv-dIMwChS4Hpzpzkayt9Y/view" target="_blank" rel="noopener">Newsletter</a>
           </div>
         </div>
       </div>
 
       <!-- Brochures: 2 files -->
       <div class="wcard">
-        <div class="wcard-banner">
+        <div class="wcard-banner" data-n="06">
           <div class="wcat-count">2 documents</div>
           <div class="wcat-name">Brochures</div>
         </div>
@@ -541,15 +622,15 @@
         <div class="wcard-foot">
           <div class="wtags"><span class="wtag">Sales enablement</span><span class="wtag">Collateral</span></div>
           <div class="wlinks">
-            <a href="https://drive.google.com/file/d/14N6gBM5yW8uZfO5UfAAq59uDcm_1hZkS/view" target="_blank">Brochure 1</a>
-            <a href="https://drive.google.com/file/d/13F19CnD4yO7gTQRL-iPSO0xXCaZCtzJz/view" target="_blank">Brochure 2</a>
+            <a href="https://drive.google.com/file/d/14N6gBM5yW8uZfO5UfAAq59uDcm_1hZkS/view" target="_blank" rel="noopener">Brochure 1</a>
+            <a href="https://drive.google.com/file/d/13F19CnD4yO7gTQRL-iPSO0xXCaZCtzJz/view" target="_blank" rel="noopener">Brochure 2</a>
           </div>
         </div>
       </div>
 
       <!-- Webinar: 1 file -->
       <div class="wcard">
-        <div class="wcard-banner">
+        <div class="wcard-banner" data-n="07">
           <div class="wcat-count">1 recording</div>
           <div class="wcat-name">Webinar</div>
         </div>
@@ -561,7 +642,7 @@
         </div>
         <div class="wcard-foot">
           <div class="wtags"><span class="wtag">Webinar</span><span class="wtag">Demand gen</span></div>
-          <a class="wlink" href="https://drive.google.com/file/d/1noWKdbjlIh41uujg6vZs1jL0idOenCZa/view" target="_blank">View in Drive</a>
+          <a class="wlink" href="https://drive.google.com/file/d/1noWKdbjlIh41uujg6vZs1jL0idOenCZa/view" target="_blank" rel="noopener">View in Drive</a>
         </div>
       </div>
 
@@ -572,9 +653,9 @@
 <!-- SKILLS -->
 <section id="skills">
   <div class="container">
-    <p class="label">Skills</p>
+    <p class="label"><span class="num">04</span>Skills</p>
     <div class="bar"></div>
-    <h2 class="title">What I bring</h2>
+    <h2 class="title">What I <em>bring</em></h2>
     <div class="skills-grid">
       <div class="sg"><h4>Content and Copy</h4><div class="si">SEO website copywriting</div><div class="si">Blog and thought leadership</div><div class="si">Case studies and client stories</div><div class="si">Sales brochures and one-pagers</div><div class="si">Press releases and award submissions</div></div>
       <div class="sg"><h4>Campaigns and Email</h4><div class="si">Email drip sequences</div><div class="si">Mid-funnel re-engagement</div><div class="si">Lifecycle communications</div><div class="si">Webinar and event asset production</div><div class="si">Campaign planning and execution</div></div>
@@ -589,9 +670,9 @@
 <!-- TECH STACK -->
 <section class="tools-sec" id="tools">
   <div class="container">
-    <p class="label">Tech Stack</p>
+    <p class="label"><span class="num">05</span>Tech Stack</p>
     <div class="bar"></div>
-    <h2 class="title">Tools I work with</h2>
+    <h2 class="title">Tools I <em>work with</em></h2>
     <div class="tools-wrap">
 
       <div class="tool-chip">
@@ -667,9 +748,9 @@
 <!-- CERTIFICATIONS -->
 <section class="certs" id="certifications">
   <div class="container">
-    <p class="label">Certifications</p>
+    <p class="label"><span class="num">06</span>Certifications</p>
     <div class="bar"></div>
-    <h2 class="title"> My Credentials</h2>
+    <h2 class="title">My <em>credentials</em></h2>
     <div class="cert-grid">
 
       <div class="cert-card">
@@ -751,9 +832,9 @@
 <!-- AI SECTION -->
 <section class="ai-sec" id="ai">
   <div class="ai-inner">
-    <p class="label">How I Work with AI</p>
+    <p class="label"><span class="num">07</span>How I Work with AI</p>
     <div class="bar"></div>
-    <h2 class="title">My shift to AI-first workflows</h2>
+    <h2 class="title">My shift to <em>AI-first</em> workflows</h2>
     <div class="ai-grid">
       <div class="ai-left">
         <p>Over the last year I have been deliberately rebuilding how I work. Not by replacing thinking with AI, but by using it to compress the distance between brief and output. Research that used to take a day now takes an hour. First drafts that would sit overnight get iterated in real time.</p>
@@ -777,14 +858,14 @@
 
     <div class="recs-header">
       <div>
-        <p class="label">Recommendations</p>
+        <p class="label"><span class="num">08</span>Recommendations</p>
         <div class="bar"></div>
-        <h2 class="title">Trusted by peers & mentors</h2>
+        <h2 class="title">Trusted by <em>peers &amp; mentors</em></h2>
       </div>
 
       <div class="recs-nav">
-        <button class="recs-arrow" onclick="scrollRecs(-1)">←</button>
-        <button class="recs-arrow" onclick="scrollRecs(1)">→</button>
+        <button class="recs-arrow" type="button" aria-label="Previous recommendation" onclick="scrollRecs(-1)">←</button>
+        <button class="recs-arrow" type="button" aria-label="Next recommendation" onclick="scrollRecs(1)">→</button>
       </div>
     </div>
 
@@ -800,7 +881,7 @@
             </div>
             <div class="rec-footer">
               <div class="rec-person">
-                <img src="Tatev.jpg" alt="Tatev"/>
+                <img src="Tatev.jpg" alt="Tatev" width="34" height="34"/>
                 <div>
                   <div class="rec-name">Tatev Harutyunyan</div>
                   <div class="rec-title">SEO Manager · Alison</div>
@@ -819,7 +900,7 @@
             </div>
             <div class="rec-footer">
               <div class="rec-person">
-                <img src="Rabia.jpg" alt="Rabia"/>
+                <img src="Rabia.jpg" alt="Rabia" width="34" height="34"/>
                 <div>
                   <div class="rec-name">Rabia Sahibzada</div>
                   <div class="rec-title">Senior Product Manager · Alison</div>
@@ -838,7 +919,7 @@
             </div>
             <div class="rec-footer">
               <div class="rec-person">
-                <img src="Pablo.jpg" alt="Pablo"/>
+                <img src="Pablo.jpg" alt="Pablo" width="34" height="34"/>
                 <div>
                   <div class="rec-name">Pablo D’Costa</div>
                   <div class="rec-title">Brand and Creative · Alison</div>
@@ -857,7 +938,7 @@
             </div>
             <div class="rec-footer">
               <div class="rec-person">
-                <img src="Deeksha.jpg" alt="Deeksha"/>
+                <img src="Deeksha.jpg" alt="Deeksha" width="34" height="34"/>
                 <div>
                   <div class="rec-name">Deeksha Honnawar</div>
                   <div class="rec-title">Brand Designer · Alison</div>
@@ -876,7 +957,7 @@
             </div>
             <div class="rec-footer">
               <div class="rec-person">
-                <img src="Aashir.jpg" alt="Aashir"/>
+                <img src="Aashir.jpg" alt="Aashir" width="34" height="34"/>
                 <div>
                   <div class="rec-name">Aashir Rayyan Khan</div>
                   <div class="rec-title">Revenue Operations · Alison</div>
@@ -891,6 +972,26 @@
 
   </div>
 </section>
+
+
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="ci">
+      <p class="label"><span class="num">09</span>Contact</p>
+      <div class="bar"></div>
+      <h2>Let's <em>talk</em></h2>
+      <p>Open to marketing roles and contract work. If you need someone who hits the ground running across content, campaigns, and demand generation, reach out.</p>
+      <div class="c-links">
+        <a href="mailto:varunchangappa11@gmail.com" class="c-link">Email me</a>
+        <a href="#work" class="c-link ghost">See the work</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>Varun Changappa &nbsp;·&nbsp; Strategic Marketing Professional &nbsp;·&nbsp; 2026</footer>
 
 <script>
 const track = document.getElementById('recsTrack');
@@ -923,27 +1024,36 @@ function stopAutoScroll() {
 
 track.addEventListener('mouseenter', stopAutoScroll);
 track.addEventListener('mouseleave', startAutoScroll);
+track.addEventListener('focusin', stopAutoScroll);
+track.addEventListener('focusout', startAutoScroll);
 
-startAutoScroll();
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!reduceMotion) startAutoScroll();
+
+// Reveal sections on scroll
+const revealEls = document.querySelectorAll('.title, .about-grid, .tl-item, .wcard, .sg, .tool-chip, .cert-card, .ai-grid, .ci');
+revealEls.forEach(el => el.classList.add('reveal'));
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => io.observe(el));
+} else {
+  revealEls.forEach(el => el.classList.add('in'));
+}
+
+// Highlight current section in nav
+const navLinks = document.querySelectorAll('.nav-links a');
+const sections = [...navLinks].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if ('IntersectionObserver' in window) {
+  const navIo = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  sections.forEach(sec => navIo.observe(sec));
+}
 </script>
-
-
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="container">
-    <div class="ci">
-      <p class="label">Contact</p>
-      <div class="bar"></div>
-      <h2>Let's talk</h2>
-      <p>Open to marketing roles and contract work. If you need someone who hits the ground running across content, campaigns, and demand generation, reach out.</p>
-      <div class="c-links">
-        <a href="mailto:varunchangappa11@gmail.com" class="c-link">Email</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>Varun Changappa &nbsp;·&nbsp; Strategic Marketing Professional &nbsp;·&nbsp; 2026</footer>
   
 </body>
 </html>
